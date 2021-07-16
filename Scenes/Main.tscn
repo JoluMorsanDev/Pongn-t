@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BarEnemie.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 360, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 240 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
@@ -31,6 +34,7 @@ position = Vector2( 34.1095, 239.962 )
 position = Vector2( 120.594, 204.631 )
 
 [node name="Bar2" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 682.745, 242.012 )
 
 [node name="UpdownBorders" type="KinematicBody2D" parent="."]
@@ -42,6 +46,10 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="UpdownBorders"]
 position = Vector2( 0, 498 )
 shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="UpdownBorders"]
+position = Vector2( 370, 240 )
+shape = SubResource( 3 )
 
 [node name="MainCam" type="Camera2D" parent="."]
 position = Vector2( 360, 240 )
@@ -118,5 +126,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Alien" parent="." instance=ExtResource( 6 )]
-position = Vector2( 590.506, 270.509 )
+[node name="Aliens" type="Node2D" parent="."]
+
+[node name="Alien" parent="Aliens" instance=ExtResource( 6 )]
+position = Vector2( 622.055, 63.6207 )
+
+[node name="Alien2" parent="Aliens" instance=ExtResource( 6 )]
+position = Vector2( 622.055, 118.713 )
+
+[node name="Alien3" parent="Aliens" instance=ExtResource( 6 )]
+position = Vector2( 623.114, 171.686 )
+
+[node name="Alien4" parent="Aliens" instance=ExtResource( 6 )]
+position = Vector2( 624.173, 229.956 )
+
+[node name="Alien5" parent="Aliens" instance=ExtResource( 6 )]
+position = Vector2( 624.173, 287.167 )
+
+[node name="Alien6" parent="Aliens" instance=ExtResource( 6 )]
+position = Vector2( 624.173, 346.497 )
+
+[node name="Alien7" parent="Aliens" instance=ExtResource( 6 )]
+position = Vector2( 624.345, 400.158 )

@@ -5,7 +5,6 @@ var speed = 50
 var dir = Vector2()
 
 func _ready():
-	global_position = Vector2(600,120)
 	down()
 
 func _process(delta):
