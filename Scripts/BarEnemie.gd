@@ -45,8 +45,5 @@ func _physics_process(delta):
 
 # warning-ignore:unused_argument
 func _on_Area2D_body_entered(body):
-	state = "follow"
+	$AnimationPlayer.play("destroy")
 
-# warning-ignore:unused_argument
-func _on_Area2D_body_exited(body):
-	state = "follow"
