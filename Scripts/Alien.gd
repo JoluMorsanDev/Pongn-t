@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var movement = "down"
-var speed = 100
+var speed = 50
 var dir = Vector2()
 
 func _ready():
