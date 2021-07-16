@@ -47,3 +47,8 @@ func _physics_process(delta):
 func _on_Area2D_body_entered(body):
 	$AnimationPlayer.play("destroy")
 
+
+
+# warning-ignore:unused_argument
+func _on_Area2D_area_entered(area):
+	$AnimationPlayer.play("destroy")
