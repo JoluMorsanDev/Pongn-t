@@ -7,9 +7,10 @@
 extents = Vector2( 12.5, 93.75 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 180, 180 )
+extents = Vector2( 225, 225 )
 
 [node name="Bar" type="KinematicBody2D"]
+collision_mask = 0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -27,7 +28,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -180, 0 )
+position = Vector2( -225, 0 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
