@@ -1,11 +1,15 @@
 extends RigidBody2D
 
+export var firstdir = "down"
 var movement = "down"
 var speed = 50
 var dir = Vector2()
 
 func _ready():
-	down()
+	if firstdir == "down":
+		down()
+	elif firstdir == "up":
+		up()
 
 func _process(delta):
 	global_position.x +=  dir.x * speed * delta
@@ -45,16 +49,16 @@ func _on_TurnTimer_timeout():
 
 func _on_WaitTimer_timeout():
 	if movement == "up":
-		$TurnTimer.wait_time = 0.5
+		$TurnTimer.wait_time = 1
 		leftup()
 	elif movement == "down":
-		$TurnTimer.wait_time = 0.5
+		$TurnTimer.wait_time = 1
 		leftdown()
 	elif movement == "leftup":
-		$TurnTimer.wait_time = 1
+		$TurnTimer.wait_time = .2
 		down()
 	elif movement == "leftdown":
-		$TurnTimer.wait_time = 1
+		$TurnTimer.wait_time = .2
 		up()
 
 
