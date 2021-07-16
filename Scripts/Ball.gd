@@ -6,6 +6,8 @@ var firstc = true
 var firstpos 
 export var rotational = 3.5
 
+signal hit
+
 func _ready():
 	randomize()
 	rotational = rand_range(3.5, 4)
@@ -34,3 +36,4 @@ func _on_VisibilityNotifier2D_screen_exited():
 	velocity.x = speed 
 	start(rotational)
 	firstc = true
+	emit_signal("hit")
