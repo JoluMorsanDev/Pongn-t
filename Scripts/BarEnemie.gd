@@ -25,12 +25,12 @@ func _physics_process(delta):
 	if state == "normal":
 		y_input = 0
 	elif state == "follow":
-		if get_parent().get_node_or_null("Ball") != null:
-			if get_parent().get_node("Ball").global_position.y - global_position.y > 10:
+		if get_parent().get_node_or_null("Balls").get_node_or_null("Ball") != null:
+			if get_parent().get_node_or_null("Balls").get_node_or_null("Ball").global_position.y - global_position.y > 10:
 				y_input = 1
-			elif get_parent().get_node_or_null("Ball").global_position.y - global_position.y < -10:
+			elif get_parent().get_node_or_null("Balls").get_node_or_null("Ball").global_position.y - global_position.y < -10:
 				y_input = -1
-			elif get_parent().get_node_or_null("Ball").global_position.y - global_position.y > -10 and get_parent().get_node_or_null("Ball").global_position.y - global_position.y < 10:
+			elif get_parent().get_node_or_null("Balls").get_node_or_null("Ball").global_position.y - global_position.y > -10 and get_parent().get_node_or_null("Balls").get_node_or_null("Ball").global_position.y - global_position.y < 10:
 				y_input = 0
 	if y_input != 0:
 		motion.y += y_input * aceleration * get_physics_process_delta_time()
