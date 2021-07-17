@@ -132,10 +132,5 @@ __meta__ = {
 position = Vector2( 360, 240 )
 current = true
 
-[node name="ScreenShakeTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [connection signal="hit" from="Balls/Ball" to="." method="_on_Ball_hit"]
 [connection signal="hit" from="Bar" to="." method="_on_Ball_hit"]
-[connection signal="timeout" from="ScreenShakeTimer" to="." method="_on_ScreenShakeTimer_timeout"]

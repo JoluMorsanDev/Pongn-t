@@ -2,10 +2,15 @@ extends Node2D
 
 var life = 3
 var screenshake = false
+onready var sctimer = Timer.new()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screenshake = false
+	sctimer.wait_time = 0.5
+	sctimer.one_shot = true
+	sctimer.connect("timeout", self, "_on_ScreenShakeTimer_timeout")
 
 # warning-ignore:unused_argument
 func _process(delta):
@@ -13,16 +18,16 @@ func _process(delta):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 	if life >= 0:
-		$LifeLabel.text = "Life: " + str(get_node_or_null("WesternGame").get_node("WesternBoi").life)
+		$LifeLabel.text = "Life: " + str(life)
 		
 
 func _on_Ball_hit():
 	if life > 0:
 		life -= 1
-		if screenshake == false:
-			camdown()
-			screenshake = true
-			$ScreenShakeTimer.start()
+	if screenshake == false:
+		camdown()
+		screenshake = true
+		sctimer.start()
 
 func camup():
 	if screenshake == true:

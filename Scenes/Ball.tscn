@@ -7,7 +7,7 @@
 extents = Vector2( 12.5, 12.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 13.5, 13.5 )
+extents = Vector2( 14, 14 )
 
 [node name="Ball" type="KinematicBody2D"]
 script = ExtResource( 2 )

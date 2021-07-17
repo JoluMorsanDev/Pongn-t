@@ -10,11 +10,12 @@ var y_input
 var firstposx 
 var bullets = 3
 var state = "static"
-var inmunity = true
 var life = 3
+var inmunity = true
 onready var bar = owner.owner.get_node_or_null("Bar")
 
 func _ready():
+	life = 3
 	y_input = 0
 	firstposx = global_position.x
 	state = "follow"
@@ -74,37 +75,51 @@ func _on_BulletTimer_timeout():
 		owner.add_child(bullet)
 		bullet.global_position.y = global_position.y
 		bullet.global_position.x = global_position.x - 20
+		inmunity = true
 	elif bullets == 2:
 		bullets = 1
 		$BulletTimer.start()
 		owner.add_child(bullet)
 		bullet.global_position.y = global_position.y
 		bullet.global_position.x = global_position.x - 20
+		inmunity = true
 	elif bullets == 1:
 		bullets = 0
 		$BulletTimer.start()
 		owner.add_child(bullet)
 		bullet.global_position.y = global_position.y
 		bullet.global_position.x = global_position.x - 20
+		inmunity = true
 	elif bullets == 0:
-		inmunity = false
 		$Shield.hide()
 		$Recharge.start()
+		inmunity = false
 	yield(get_tree().create_timer(.5),"timeout")
 	state = "follow"
 
 func _on_Recharge_timeout():
-	inmunity = true
 	$Shield.show()
 	bullets = 3
 	$BulletTimer.start()
+	inmunity = true
 
-func hit():
-	if life == 3 and inmunity == false:
-		life = 2
-	if life == 2 and inmunity == false:
-		life = 1
-	if life == 1 and inmunity == false:
-		life = 0
-	elif life == 0 and inmunity == false:
+# warning-ignore:unused_argument
+func _on_Area2D_area_entered(area):
+	if life > 1 and inmunity == false:
+		life -=1
+		$Sprite/Hit.show()
+	elif life <= 1 and inmunity == false:
+		$Sprite/Arms.hide()
+		$Sprite/Body.hide()
+		$Sprite/Arms.hide()
+		$Sprite/Hit.show()
+		$BulletTimer.stop()
+		$Recharge.stop()
+		bullets = 0
+	inmunity = true
+	yield(get_tree().create_timer(.5),"timeout")
+	if life <= 1 and inmunity == false:
 		queue_free()
+	else:
+		$Sprite/Hit.hide()
+		inmunity = false
