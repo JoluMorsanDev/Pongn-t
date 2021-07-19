@@ -53,14 +53,17 @@ func _physics_process(delta):
 		$NumberOfBullet/Bullet.show()
 		$NumberOfBullet/Bullet2.show()
 		$NumberOfBullet/Bullet3.show()
+		inmunity = true
 	elif bullets == 2:
 		$NumberOfBullet/Bullet.show()
 		$NumberOfBullet/Bullet2.show()
 		$NumberOfBullet/Bullet3.hide()
+		inmunity = true
 	elif bullets == 1:
 		$NumberOfBullet/Bullet.show()
 		$NumberOfBullet/Bullet2.hide()
 		$NumberOfBullet/Bullet3.hide()
+		inmunity = true
 	elif bullets == 0:
 		$NumberOfBullet/Bullet.hide()
 		$NumberOfBullet/Bullet2.hide()
@@ -93,7 +96,7 @@ func _on_BulletTimer_timeout():
 	elif bullets == 0:
 		$Shield.hide()
 		$Recharge.start()
-		inmunity = false
+		inmunity = true
 	yield(get_tree().create_timer(.5),"timeout")
 	state = "follow"
 
