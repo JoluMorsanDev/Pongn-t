@@ -94,9 +94,9 @@ func _on_BulletTimer_timeout():
 		bullet.global_position.x = global_position.x - 20
 		inmunity = true
 	elif bullets == 0:
+		inmunity = false
 		$Shield.hide()
 		$Recharge.start()
-		inmunity = true
 	yield(get_tree().create_timer(.5),"timeout")
 	state = "follow"
 
@@ -122,6 +122,8 @@ func _on_Area2D_area_entered(area):
 	inmunity = true
 	yield(get_tree().create_timer(.5),"timeout")
 	if life <= 1 and inmunity == false:
+		hide()
+		$Area2D/CollisionPolygon2D.set_deferred("disabled", true)
 		queue_free()
 	else:
 		$Sprite/Hit.hide()

@@ -316,12 +316,12 @@ collision_mask = 2
 polygon = PoolVector2Array( -12.4544, -48.8295, 12.4105, -48.8799, 12.4848, -19.1637, 37.3438, -19.2163, 37.4282, -6.81249, 18.7169, -6.7529, 18.7401, 25.0048, 15.759, 25.0324, 15.8298, 49.9971, 3.26927, 50.0313, 3.27889, 25.0494, -3.30659, 25.0437, -3.26531, 49.9694, -15.7277, 50.026, -15.857, 24.9941, -18.6349, 24.9445, -18.6854, -6.80589, -37.499, -6.89738, -37.375, -19.3347, -12.4707, -19.0778 )
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.5
 one_shot = true
 autostart = true
 
 [node name="Recharge" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.5
 one_shot = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -9,7 +9,6 @@ export var rotational = 3.5
 signal hit
 
 func _ready():
-	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 	randomize()
 	rotational = rand_range(3.5, 4)
 	$Sprite.rotation_degrees = -rotational
@@ -21,7 +20,6 @@ func _ready():
 func start(dir):
 	rotation_degrees = dir
 	velocity = Vector2(speed, 0).rotated(rotation)
-	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
@@ -30,8 +28,6 @@ func _physics_process(delta):
 		if firstc == true:
 			velocity = Vector2(speed, 0).rotated(rotational)
 			firstc = false
-	if velocity < Vector2(speed/2, 0).rotated(rotation):
-		_on_VisibilityNotifier2D_screen_exited()
 
 
 func _on_VisibilityNotifier2D_screen_exited():

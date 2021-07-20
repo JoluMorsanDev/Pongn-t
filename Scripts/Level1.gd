@@ -20,15 +20,19 @@ func _process(delta):
 		get_tree().reload_current_scene()
 	if life >= 0:
 		$LifeLabel.text = "Life: " + str(life)
+	
 		
 
 func _on_Ball_hit():
 	if life > 0:
 		life -= 1
-	if screenshake == false:
-		screenshake = true
-		sctimer.start()
-		camdown()
+		if screenshake == false:
+			screenshake = true
+			sctimer.start()
+			camdown()
+	else:
+		pass
+		#game_over()
 
 func camup():
 	if screenshake == true:
@@ -56,7 +60,12 @@ func game_over():
 	$Midline.hide()
 	$Balls.hide()
 	$Bar.hide()
-	$WesternGame.hide()
+	if get_node_or_null("Aliens") != null:
+		get_node_or_null("Aliens").hide()
+	if get_node_or_null("WesternGame") != null:
+		get_node_or_null("WesternGame").hide()
+	if get_node_or_null("JumpManGame") != null:
+		get_node_or_null("JumpManGame").hide()
 	$LifeLabel.text = "Game Over"
 # warning-ignore:return_value_discarded
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()

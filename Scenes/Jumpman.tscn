@@ -129,6 +129,7 @@ scale = Vector2( 0.6, 1.5 )
 texture = ExtResource( 1 )
 
 [node name="Damage" type="Sprite" parent="Body"]
+visible = false
 
 [node name="Damage" type="Sprite" parent="Body/Damage"]
 position = Vector2( -10, -37 )
@@ -155,7 +156,7 @@ collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( -2, -9 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 2.5, 2.5 )
 polygon = PoolVector2Array( -8.42791, -17.4472, -8.4292, -13.5127, -12.4997, -13.5127, -12.5, -11.7734, -14.75, -11.7422, -14.75, -8.22656, -12.5, -8.24219, -12.5079, -6.48837, -8.40633, -6.47868, -8.40625, -4, -11.5078, -4, -11.5222, -1.50322, -13.9922, -1.49219, -13.9922, 13.5078, -11.5078, 13.5156, -11.4844, 20.4297, -2.75, 20.4141, -2.74219, 16.0078, 4.73438, 15.9844, 4.75, 20.4375, 13.4896, 20.4654, 13.4922, -3.99219, 10.3438, -4.01563, 10.3359, -17.4219 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
