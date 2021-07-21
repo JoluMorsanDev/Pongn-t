@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/BarEnemie.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Minigames/SpaceInvaders/Aliens.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sprites/Sprite1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Fonts/upheavtt.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scripts/Levels/SpaceInvaders.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 6 )
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 720.0
+margin_bottom = 480.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Midline" type="Sprite" parent="."]
+
+[node name="m1" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 0 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m2" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 50 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m3" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 100 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m4" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 150 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m5" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 200 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m6" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 250 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m7" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 300 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m8" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 350 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m9" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 400 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m10" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 450 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="m11" type="Sprite" parent="Midline"]
+position = Vector2( 360.05, 450 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 5 )
+
+[node name="Aliens" parent="." instance=ExtResource( 4 )]
+
+[node name="Balls" type="Node2D" parent="."]
+
+[node name="Ball" parent="Balls" instance=ExtResource( 3 )]
+position = Vector2( 120.594, 204.631 )
+
+[node name="Bar" parent="." instance=ExtResource( 1 )]
+position = Vector2( 34.1095, 239.962 )
+
+[node name="Bar2" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 682.745, 242.012 )
+
+[node name="LifeLabel" type="Label" parent="."]
+margin_left = 221.419
+margin_top = 12.3611
+margin_right = 411.419
+margin_bottom = 56.3611
+custom_fonts/font = SubResource( 1 )
+text = "Life: 3"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainCam" type="Camera2D" parent="."]
+position = Vector2( 360, 240 )
+current = true
+
+[connection signal="hit" from="Balls/Ball" to="." method="_on_Ball_hit"]
+[connection signal="hit" from="Bar" to="." method="_on_Ball_hit"]
