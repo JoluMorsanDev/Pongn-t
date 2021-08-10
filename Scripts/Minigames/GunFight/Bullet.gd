@@ -2,6 +2,7 @@ extends RigidBody2D
 
 func _physics_process(delta):
 	position.x -= 250 * delta
+	global_position.y = clamp(global_position.y, 0, 480)
 
 
 # warning-ignore:unused_argument

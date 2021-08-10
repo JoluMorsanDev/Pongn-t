@@ -7,10 +7,19 @@ var target
 
 signal hit
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
+	yield(get_tree().create_timer(0.5),"timeout")
+	if jumpman_state == "normal":
+		if target - $Jumpman.global_position.y < 0:
+			$Jumpman/Body/HammerHand/Up.show()
+			$Jumpman/Body/HammerHand/Down.hide()
+			$AnimationPlayer.play("up")
+		elif target - $Jumpman.global_position.y > 0:
+			$Jumpman/Body/HammerHand/Up.hide()
+			$Jumpman/Body/HammerHand/Down.show()
+			$AnimationPlayer.play("down")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # warning-ignore:unused_argument
@@ -26,6 +35,10 @@ func _on_Jumpman_hit():
 	$StunTimer.start()
 
 func _on_StunTimer_timeout():
+	if target > 240:
+		$AnimationPlayer.play("down")
+	else:
+		$AnimationPlayer.play("up")
 	jumpman_state = "normal"
 	$Jumpman/Area2D/CollisionPolygon2D.set_deferred("disabled", false)
 	$Jumpman/Body/Damage.hide()
@@ -44,6 +57,8 @@ func _on_Area2D_area_entered(area):
 
 # warning-ignore:unused_argument
 func _on_Area2D2_area_entered(area):
-	if jumpman_life > 0:
+	if jumpman_life > 1:
 		jumpman_life -= 1
+	else:
+		queue_free()
 	emit_signal("hit")

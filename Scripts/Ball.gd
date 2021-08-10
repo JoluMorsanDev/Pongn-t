@@ -33,16 +33,16 @@ func _physics_process(delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	rotational = rand_range(3.5, 4)
 	$Sprite.rotation_degrees = -rotational
-	global_position = firstpos
-	velocity.x = -speed 
 	start(rotational)
 	firstc = true
+	global_position = firstpos
+	velocity.x = -speed 
 	emit_signal("hit")
 
 func boss_hit():
 	rotational = rand_range(3.5, 4)
 	$Sprite.rotation_degrees = -rotational
-	global_position = firstpos
-	velocity.x = -speed 
 	start(rotational)
 	firstc = true
+	global_position = firstpos
+	velocity.x = -speed 

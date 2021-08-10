@@ -1,29 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Minigames/GunFight/WesternBoi.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Minigames/GunFight/Cactacia.tscn" type="PackedScene" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 360, 10 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 240 )
-
 [node name="WesternGame" type="Node2D"]
-
-[node name="Limits" type="KinematicBody2D" parent="."]
-position = Vector2( 360, -9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits"]
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limits"]
-position = Vector2( 0, 498 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limits"]
-position = Vector2( 370, 249 )
-shape = SubResource( 2 )
 
 [node name="WesternBoi" parent="." instance=ExtResource( 1 )]
 position = Vector2( 607.601, 232.89 )

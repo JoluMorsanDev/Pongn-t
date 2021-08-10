@@ -7,6 +7,7 @@ onready var sctimer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	$Balls/Ball.velocity.x = -$Balls/Ball.speed
 	screenshake = false
 	sctimer.wait_time = 0.2
@@ -21,19 +22,19 @@ func _process(delta):
 		get_tree().reload_current_scene()
 	if life >= 0:
 		$LifeLabel.text = "Life: " + str(life)
-	
-		
+	if $Aliens/Army.get_child_count() == 0:
+		win()
 
 func _on_Ball_hit():
-	if life > 0:
+	$Bar.position.y = 239.962
+	if life > 1:
 		life -= 1
 		if screenshake == false:
 			screenshake = true
 			sctimer.start()
 			camdown()
 	else:
-		pass
-		#game_over()
+		game_over()
 
 func camup():
 	if screenshake == true:
@@ -58,18 +59,17 @@ func _on_ScreenShakeTimer_timeout():
 	$ColorRect.color = Color(0, 0, 0, 0)
 
 func game_over():
-	$Midline.hide()
-	$Balls.hide()
-	$Bar.hide()
-	if get_node_or_null("Aliens") != null:
-		get_node_or_null("Aliens").hide()
-	if get_node_or_null("WesternGame") != null:
-		get_node_or_null("WesternGame").hide()
-	if get_node_or_null("JumpManGame") != null:
-		get_node_or_null("JumpManGame").hide()
-	$LifeLabel.text = "Game Over"
-# warning-ignore:return_value_discarded
-	#get_tree().reload_current_scene()
+	get_tree().paused = true
+	$MainCam/GameOverUI.show()
+
+func win():
+	Singletones.levelsunlocked = 1
+	Singletones.save_levels_unlocked()
+	get_tree().paused = false
+	$MainCam/winUI.show()
 
 func _on_Bar_hit():
 	_on_Ball_hit()
+
+func _on_Aliens_game_over():
+	game_over()

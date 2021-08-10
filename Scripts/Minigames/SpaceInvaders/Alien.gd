@@ -14,6 +14,8 @@ func _ready():
 func _process(delta):
 	global_position.x +=  dir.x * speed * delta
 	global_position.y +=  dir.y * speed * delta
+	if global_position.x < 46:
+		get_parent().get_parent().emit_signal("game_over")
 
 func down():
 	movement = "down"
@@ -65,3 +67,5 @@ func _on_WaitTimer_timeout():
 # warning-ignore:unused_argument
 func _on_Area2D2_body_entered(body):
 	queue_free()
+
+

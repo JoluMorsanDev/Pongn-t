@@ -25,15 +25,15 @@ func _process(delta):
 		
 
 func _on_Ball_hit():
-	if life > 0:
+	$Bar.position.y = 239.962
+	if life > 1:
 		life -= 1
 		if screenshake == false:
 			screenshake = true
 			sctimer.start()
 			camdown()
 	else:
-		pass
-		#game_over()
+		game_over()
 
 func camup():
 	if screenshake == true:
@@ -58,18 +58,14 @@ func _on_ScreenShakeTimer_timeout():
 	$ColorRect.color = Color(0, 0, 0, 0)
 
 func game_over():
-	$Midline.hide()
-	$Balls.hide()
-	$Bar.hide()
-	if get_node_or_null("Aliens") != null:
-		get_node_or_null("Aliens").hide()
-	if get_node_or_null("WesternGame") != null:
-		get_node_or_null("WesternGame").hide()
-	if get_node_or_null("JumpManGame") != null:
-		get_node_or_null("JumpManGame").hide()
-	$LifeLabel.text = "Game Over"
-# warning-ignore:return_value_discarded
-	#get_tree().reload_current_scene()
+	get_tree().paused = true
+	$MainCam/Gameoverui.show()
+
+func win():
+	Singletones.levelsunlocked = 2
+	Singletones.save_levels_unlocked()
+	get_tree().paused = false
+	$MainCam/winUI.show()
 
 func _on_Bar_hit():
 	_on_Ball_hit()
