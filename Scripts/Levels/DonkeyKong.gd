@@ -7,6 +7,7 @@ onready var sctimer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	$Balls/Ball.velocity.x = -$Balls/Ball.speed
 	screenshake = false
 	sctimer.wait_time = 0.2
@@ -21,12 +22,13 @@ func _process(delta):
 		get_tree().reload_current_scene()
 	if life >= 0:
 		$LifeLabel.text = "Life: " + str(life)
-	
-		
+	if get_node_or_null("JumpManGame") == null:
+		win()
 
 func _on_Ball_hit():
+	Singletones.play_hit()
 	$Bar.position.y = 239.962
-	if life > 0:
+	if life > 1:
 		life -= 1
 		if screenshake == false:
 			screenshake = true
@@ -64,15 +66,15 @@ func game_over():
 func win():
 	Singletones.levelsunlocked = 3
 	Singletones.save_levels_unlocked()
-	get_tree().paused = false
+	get_tree().paused = true
 	$MainCam/winUI.show()
 
 func _on_Bar_hit():
 	_on_Ball_hit()
 
 func _on_JumpManGame_hit():
+	Singletones.play_hit()
 	$Balls/Ball.boss_hit()
 	$JumpManGame/Jumpman/Body/Damage.hide()
 	$JumpManGame/StunTimer.stop()
 	$JumpManGame/Jumpman/Area2D/CollisionPolygon2D.set_deferred("disabled", false)
-	$Bar.position.y = 239.962

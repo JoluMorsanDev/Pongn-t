@@ -7,6 +7,7 @@ onready var sctimer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	$Balls/Ball.velocity.x = -$Balls/Ball.speed
 	screenshake = false
 	sctimer.wait_time = 0.2
@@ -16,8 +17,8 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _process(delta):
-	if $ChicoMuffin.tank == true:
-		$TankLifeLabel.text = "Tank Life: " + str($ChicoMuffin/Tank.life)
+	if $ChicoMuffin.get_node_or_null("Tank") != null:
+		$TankLifeLabel.text = "Tank Life: " + str($ChicoMuffin.get_node_or_null("Tank").life)
 	else:
 		$TankLifeLabel.text = "S. T. Life: " + str($ChicoMuffin.life)
 	if Input.is_action_pressed("ui_select"):
@@ -29,8 +30,9 @@ func _process(delta):
 		
 
 func _on_Ball_hit():
+	Singletones.play_hit()
 	$Bar.position.y = 239.962
-	if life > 0:
+	if life > 1:
 		life -= 1
 		if screenshake == false:
 			screenshake = true
@@ -68,7 +70,7 @@ func game_over():
 func win():
 	Singletones.levelsunlocked = 4
 	Singletones.save_levels_unlocked()
-	get_tree().paused = false
+	get_tree().paused = true
 	$MainCam/winUI.show()
 
 func _on_Bar_hit():

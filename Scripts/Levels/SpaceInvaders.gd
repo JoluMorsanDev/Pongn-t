@@ -26,6 +26,7 @@ func _process(delta):
 		win()
 
 func _on_Ball_hit():
+	Singletones.play_hit()
 	$Bar.position.y = 239.962
 	if life > 1:
 		life -= 1
@@ -65,7 +66,7 @@ func game_over():
 func win():
 	Singletones.levelsunlocked = 1
 	Singletones.save_levels_unlocked()
-	get_tree().paused = false
+	get_tree().paused = true
 	$MainCam/winUI.show()
 
 func _on_Bar_hit():

@@ -139,6 +139,7 @@ position = Vector2( 360, 240 )
 current = true
 
 [node name="Gameoverui" parent="MainCam" instance=ExtResource( 9 )]
+position = Vector2( -360, -240 )
 
 [node name="winUI" parent="MainCam" instance=ExtResource( 10 )]
 position = Vector2( -360, -240 )

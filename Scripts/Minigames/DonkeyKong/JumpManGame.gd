@@ -42,6 +42,14 @@ func _on_StunTimer_timeout():
 	jumpman_state = "normal"
 	$Jumpman/Area2D/CollisionPolygon2D.set_deferred("disabled", false)
 	$Jumpman/Body/Damage.hide()
+	if target - $Jumpman.global_position.y < 0:
+		$Jumpman/Body/HammerHand/Up.show()
+		$Jumpman/Body/HammerHand/Down.hide()
+		$AnimationPlayer.play("up")
+	elif target - $Jumpman.global_position.y > 0:
+		$Jumpman/Body/HammerHand/Up.hide()
+		$Jumpman/Body/HammerHand/Down.show()
+		$AnimationPlayer.play("down")
 
 # warning-ignore:unused_argument
 func _on_Area2D_area_entered(area):
@@ -62,3 +70,11 @@ func _on_Area2D2_area_entered(area):
 	else:
 		queue_free()
 	emit_signal("hit")
+	if target - $Jumpman.global_position.y < 0:
+			$Jumpman/Body/HammerHand/Up.show()
+			$Jumpman/Body/HammerHand/Down.hide()
+			$AnimationPlayer.play("up")
+	elif target - $Jumpman.global_position.y > 0:
+			$Jumpman/Body/HammerHand/Up.hide()
+			$Jumpman/Body/HammerHand/Down.show()
+			$AnimationPlayer.play("down")

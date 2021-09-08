@@ -1,7 +1,9 @@
 extends RigidBody2D
 
+var speed = 250
+
 func _physics_process(delta):
-	position.x -= 250 * delta
+	position.x -= speed * delta
 	global_position.y = clamp(global_position.y, 0, 480)
 
 

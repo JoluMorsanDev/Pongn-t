@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var life = 5
 var inmunity = true
+export (PackedScene) var Bullet
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +16,8 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _on_LifeArea_body_entered(area):
-	if life >= 1:
+	Singletones.play_hit()
+	if life > 1:
 		if inmunity == true:
 			life -= 1
 	else:
@@ -44,3 +46,10 @@ func inmunityflashnt():
 		modulate.a = 0
 		yield(get_tree().create_timer(.05),"timeout")
 		inmunityflash()
+
+
+func _on_BulletTimer_timeout():
+	var bullet = Bullet.instance()
+	add_child(bullet)
+	bullet.speed = 200
+	bullet.global_position = Vector2(global_position.x - 200, global_position.y)

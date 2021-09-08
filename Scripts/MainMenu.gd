@@ -14,7 +14,7 @@ func _ready():
 	elif Singletones.levelsunlocked == 1:
 		$PlayButton.text = "> Play Night 2"
 	elif Singletones.levelsunlocked == 2:
-		$PlayButton.text = "> Play Night 1"
+		$PlayButton.text = "> Play Night 3"
 
 func _on_ExitButton_pressed():
 	get_tree().quit()

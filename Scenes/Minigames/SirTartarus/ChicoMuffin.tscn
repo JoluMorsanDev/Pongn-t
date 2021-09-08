@@ -155,113 +155,113 @@ texture = ExtResource( 1 )
 
 [node name="Pickaxes" type="Sprite" parent="."]
 
-[node name="1" type="Sprite" parent="Pickaxes"]
+[node name="first" type="Sprite" parent="Pickaxes"]
 position = Vector2( 35.1821, 109.709 )
 scale = Vector2( 0.1, 0.1 )
 
-[node name="Sprite" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite" type="Sprite" parent="Pickaxes/first"]
 texture = ExtResource( 1 )
 
-[node name="Sprite2" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite2" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 0, -24 )
 texture = ExtResource( 1 )
 
-[node name="Sprite3" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite3" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 0, 25 )
 texture = ExtResource( 1 )
 
-[node name="Sprite4" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite4" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 0, 50 )
 texture = ExtResource( 1 )
 
-[node name="Sprite12" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite12" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 0, 75 )
 texture = ExtResource( 1 )
 
-[node name="Sprite5" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite5" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 0, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite13" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite13" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 0, -74 )
 texture = ExtResource( 1 )
 
-[node name="Sprite6" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite6" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( -25, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite7" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite7" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( -50, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite8" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite8" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( -75, -24 )
 texture = ExtResource( 1 )
 
-[node name="Sprite9" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite9" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 25, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite10" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite10" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 50, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite11" type="Sprite" parent="Pickaxes/1"]
+[node name="Sprite11" type="Sprite" parent="Pickaxes/first"]
 position = Vector2( 75, -24 )
 texture = ExtResource( 1 )
 
-[node name="2" type="Sprite" parent="Pickaxes"]
+[node name="second" type="Sprite" parent="Pickaxes"]
 position = Vector2( 54.1821, 109.709 )
 scale = Vector2( 0.1, 0.1 )
 
-[node name="Sprite" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite" type="Sprite" parent="Pickaxes/second"]
 texture = ExtResource( 1 )
 
-[node name="Sprite2" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite2" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 0, -24 )
 texture = ExtResource( 1 )
 
-[node name="Sprite3" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite3" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 0, 25 )
 texture = ExtResource( 1 )
 
-[node name="Sprite4" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite4" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 0, 50 )
 texture = ExtResource( 1 )
 
-[node name="Sprite12" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite12" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 0, 75 )
 texture = ExtResource( 1 )
 
-[node name="Sprite5" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite5" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 0, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite13" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite13" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 0, -74 )
 texture = ExtResource( 1 )
 
-[node name="Sprite6" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite6" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( -25, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite7" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite7" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( -50, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite8" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite8" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( -75, -24 )
 texture = ExtResource( 1 )
 
-[node name="Sprite9" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite9" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 25, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite10" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite10" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 50, -49 )
 texture = ExtResource( 1 )
 
-[node name="Sprite11" type="Sprite" parent="Pickaxes/2"]
+[node name="Sprite11" type="Sprite" parent="Pickaxes/second"]
 position = Vector2( 75, -24 )
 texture = ExtResource( 1 )
 
@@ -275,11 +275,21 @@ collision_mask = 1024
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="PickaxeArea"]
 polygon = PoolVector2Array( -23.4031, 24.032, -23.4453, 28.6926, -28.1077, 28.781, -28.0502, 46.3844, -50.2095, 46.4493, -50.4744, 55.5871, -28.217, 55.768, -28.0309, 94.5405, -23.462, 94.5405, -23.5084, 99.024, -19.587, 99.2183, -19.5867, 117.868, -4.47229, 117.78, -4.4726, 99.0415, 4.60669, 99.024, 4.45477, 117.691, 19.304, 117.691, 19.5402, 98.9406, 23.4871, 98.9782, 23.4477, 94.2929, 28.0937, 94.4503, 28.0204, 55.6487, 52.4959, 55.8459, 52.6727, 46.4767, 28.1666, 46.374, 28.1166, 28.8032, 23.4951, 28.7754, 23.4395, 24.0425, 9.45709, 24.119, 9.42395, 18.8217, 18.6447, 18.6902, 18.7331, -18.6097, -18.6552, -18.6981, -18.8065, 18.797, -9.3407, 18.8527, -9.34833, 23.9865 )
 
+[node name="Tank" parent="." instance=ExtResource( 4 )]
+
 [node name="Pickaxe Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
-[node name="Tank" parent="." instance=ExtResource( 4 )]
+[node name="FlyTimer" type="Timer" parent="."]
+
+[node name="FliesSummon" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="FliesSummon"]
+position = Vector2( 35, 184.139 )
+
+[node name="Position2D2" type="Position2D" parent="FliesSummon"]
+position = Vector2( 35, -76.195 )
 
 [connection signal="area_entered" from="PickaxeArea" to="." method="_on_PickaxeArea_area_entered"]
 [connection signal="timeout" from="Pickaxe Timer" to="." method="_on_Pickaxe_Timer_timeout"]

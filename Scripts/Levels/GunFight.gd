@@ -7,6 +7,7 @@ onready var sctimer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().paused = false
 	$Balls/Ball.velocity.x = -$Balls/Ball.speed
 	screenshake = false
 	sctimer.wait_time = 0.2
@@ -21,10 +22,11 @@ func _process(delta):
 		get_tree().reload_current_scene()
 	if life >= 0:
 		$LifeLabel.text = "Life: " + str(life)
-	
-		
+	if $WesternGame.get_node_or_null("WesternBoi") == null:
+		win()
 
 func _on_Ball_hit():
+	Singletones.play_hit()
 	$Bar.position.y = 239.962
 	if life > 1:
 		life -= 1
@@ -64,7 +66,7 @@ func game_over():
 func win():
 	Singletones.levelsunlocked = 2
 	Singletones.save_levels_unlocked()
-	get_tree().paused = false
+	get_tree().paused = true
 	$MainCam/winUI.show()
 
 func _on_Bar_hit():

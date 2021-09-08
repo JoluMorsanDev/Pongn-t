@@ -13,6 +13,7 @@ var pick_ammo = 2
 export (PackedScene) var fly
 var tank = true
 var life = 3
+onready var tankobj = get_node_or_null("Tank")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,12 +22,10 @@ func _ready():
 	state = "follow"
 
 func _physics_process(delta):
-	if get_node_or_null("ChicoMuffin").get_node_or_null("Tank") != null:
+	if tankobj != null:
 		tank = true
-		$Life.text = "Tank Life: " + str($Tank.life)
 	else:
 		tank = false
-		$Life.text = "S. T. Life: " + str(life)
 	global_position.x = firstposx
 	if state == "static":
 		y_input = 0
@@ -52,6 +51,16 @@ func _physics_process(delta):
 	elif state == "static":
 		pass
 	motion = move_and_slide(motion)
+	match pick_ammo:
+		0:
+			$Pickaxes/first.hide()
+			$Pickaxes/second.hide()
+		1:
+			$Pickaxes/first.show()
+			$Pickaxes/second.hide()
+		2:
+			$Pickaxes/first.show()
+			$Pickaxes/second.show()
 
 # warning-ignore:unused_argument
 func _on_PickaxeArea_area_entered(area):
@@ -63,4 +72,7 @@ func _on_PickaxeArea_area_entered(area):
 
 
 func _on_Pickaxe_Timer_timeout():
-	pass # Replace with function body.
+	if pick_ammo > 0:
+		var pick = Pickaxe.instance()
+		add_child(pick)
+		pick.global_position = Vector2(global_position.x - 150, global_position.y)

@@ -260,6 +260,9 @@ __meta__ = {
 [node name="BossLevel" type="Control" parent="Nights"]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BossLabels" type="Label" parent="Nights/BossLevel"]
 modulate = Color( 0.54902, 0.54902, 0.54902, 1 )

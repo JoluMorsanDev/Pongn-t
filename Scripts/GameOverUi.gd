@@ -35,4 +35,12 @@ func _on_Exit_pressed():
 
 
 func _on_Next_pressed():
-	pass
+	if Singletones.levelsunlocked == 0:
+# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://Scenes/Levels/SpaceInvaders.tscn")
+	elif Singletones.levelsunlocked == 1:
+# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://Scenes/Levels/GunFight.tscn")
+	elif Singletones.levelsunlocked == 2:
+# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://Scenes/Levels/DonkeyKong.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BarEnemie.tscn" type="PackedScene" id=2]
@@ -13,6 +13,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 360, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 240 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
@@ -96,6 +99,10 @@ shape = SubResource( 1 )
 position = Vector2( 0, 498 )
 shape = SubResource( 1 )
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limits"]
+position = Vector2( 375, 248 )
+shape = SubResource( 3 )
+
 [node name="JumpManGame" parent="." instance=ExtResource( 4 )]
 
 [node name="Balls" type="Node2D" parent="."]
@@ -131,6 +138,7 @@ position = Vector2( 360, 240 )
 current = true
 
 [node name="Gameoverui" parent="MainCam" instance=ExtResource( 9 )]
+position = Vector2( -360, -240 )
 
 [node name="winUI" parent="MainCam" instance=ExtResource( 10 )]
 position = Vector2( -360, -240 )
