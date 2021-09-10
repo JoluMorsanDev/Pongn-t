@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
 #declarar variables
-export var aceleration = 800
-export var max_speed = 500
+export var aceleration = 800*1.5
+export var max_speed = 500*1.5
 var motion = Vector2()
 export var friction = 0.3
 var firstposx
 var y_input = 0
+var inmunity = false
 
 signal hit
 
@@ -32,4 +33,10 @@ func _physics_process(delta):
 
 # warning-ignore:unused_argument
 func _on_HitArea_area_entered(area):
-	emit_signal("hit")
+	if inmunity == false and area.name != "shield":
+		emit_signal("hit")
+		inmunity = true
+		$InmunityTimer.start()
+
+func _on_InmunityTimer_timeout():
+	inmunity = false

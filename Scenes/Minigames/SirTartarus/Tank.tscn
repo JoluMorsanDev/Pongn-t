@@ -100,8 +100,11 @@ wait_time = 0.5
 one_shot = true
 
 [node name="BulletTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
+
+[node name="BulletPos" type="Position2D" parent="."]
+position = Vector2( -110, 90 )
 
 [connection signal="area_entered" from="LifeArea" to="." method="_on_LifeArea_body_entered"]
 [connection signal="timeout" from="InmunityTimer" to="." method="_on_InmunityTimer_timeout"]

@@ -17,10 +17,13 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _process(delta):
-	if $ChicoMuffin.get_node_or_null("Tank") != null:
-		$TankLifeLabel.text = "Tank Life: " + str($ChicoMuffin.get_node_or_null("Tank").life)
+	if get_node_or_null("ChicoMuffin") == null:
+		win()
 	else:
-		$TankLifeLabel.text = "S. T. Life: " + str($ChicoMuffin.life)
+		if get_node_or_null("ChicoMuffin").get_node_or_null("Tank") != null:
+			$TankLifeLabel.text = "Tank Life: " + str($ChicoMuffin.get_node_or_null("Tank").life)
+		else:
+			$TankLifeLabel.text = "S. T. Life: " + str($ChicoMuffin.life)
 	if Input.is_action_pressed("ui_select"):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
@@ -64,14 +67,27 @@ func _on_ScreenShakeTimer_timeout():
 	$ColorRect.color = Color(0, 0, 0, 0)
 
 func game_over():
+	screenshake = false
+	$MainCam.global_position.y = 240
+	$MainCam.global_rotation_degrees = 0
+	$ColorRect.color = Color(0, 0, 0, 0)
 	get_tree().paused = true
 	$MainCam/Gameoverui.show()
 
 func win():
-	Singletones.levelsunlocked = 4
+	screenshake = false
+	$MainCam.global_position.y = 240
+	$MainCam.global_rotation_degrees = 0
+	$ColorRect.color = Color(0, 0, 0, 0)
+	if Singletones.levelsunlocked == 3:
+		Singletones.levelsunlocked = 4
 	Singletones.save_levels_unlocked()
 	get_tree().paused = true
 	$MainCam/winUI.show()
 
 func _on_Bar_hit():
 	_on_Ball_hit()
+
+func _on_Ball_heal():
+	life += 1
+	life = clamp(life, 0, 3)

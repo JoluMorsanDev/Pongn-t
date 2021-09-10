@@ -60,11 +60,20 @@ func _on_ScreenShakeTimer_timeout():
 	$ColorRect.color = Color(0, 0, 0, 0)
 
 func game_over():
+	screenshake = false
+	$MainCam.global_position.y = 240
+	$MainCam.global_rotation_degrees = 0
+	$ColorRect.color = Color(0, 0, 0, 0)
 	get_tree().paused = true
 	$MainCam/GameOverUI.show()
 
 func win():
-	Singletones.levelsunlocked = 1
+	screenshake = false
+	$MainCam.global_position.y = 240
+	$MainCam.global_rotation_degrees = 0
+	$ColorRect.color = Color(0, 0, 0, 0)
+	if Singletones.levelsunlocked == 0:
+		Singletones.levelsunlocked = 1
 	Singletones.save_levels_unlocked()
 	get_tree().paused = true
 	$MainCam/winUI.show()
@@ -74,3 +83,7 @@ func _on_Bar_hit():
 
 func _on_Aliens_game_over():
 	game_over()
+
+func _on_Ball_heal():
+	life += 1
+	life = clamp(life, 0, 3)

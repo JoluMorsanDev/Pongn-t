@@ -60,11 +60,20 @@ func _on_ScreenShakeTimer_timeout():
 	$ColorRect.color = Color(0, 0, 0, 0)
 
 func game_over():
+	screenshake = false
+	$MainCam.global_position.y = 240
+	$MainCam.global_rotation_degrees = 0
+	$ColorRect.color = Color(0, 0, 0, 0)
 	get_tree().paused = true
 	$MainCam/Gameoverui.show()
 
 func win():
-	Singletones.levelsunlocked = 3
+	screenshake = false
+	$MainCam.global_position.y = 240
+	$MainCam.global_rotation_degrees = 0
+	$ColorRect.color = Color(0, 0, 0, 0)
+	if Singletones.levelsunlocked == 2:
+		Singletones.levelsunlocked = 3
 	Singletones.save_levels_unlocked()
 	get_tree().paused = true
 	$MainCam/winUI.show()
@@ -78,3 +87,7 @@ func _on_JumpManGame_hit():
 	$JumpManGame/Jumpman/Body/Damage.hide()
 	$JumpManGame/StunTimer.stop()
 	$JumpManGame/Jumpman/Area2D/CollisionPolygon2D.set_deferred("disabled", false)
+
+func _on_Ball_heal():
+	life += 1
+	life = clamp(life, 0, 3)

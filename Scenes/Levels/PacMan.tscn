@@ -1,23 +1,42 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BarEnemie.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Minigames/SpaceInvaders/Aliens.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Levels/PacMan.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Sprites/Sprite1.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Fonts/upheavtt.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Scripts/Levels/SpaceInvaders.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/PauseUi.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/GameOverUi.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/WinrUi.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/ItemSpawn.tscn" type="PackedScene" id=11]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 360, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 240 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 48
 font_data = ExtResource( 6 )
 
 [node name="Level1" type="Node2D"]
-script = ExtResource( 7 )
+script = ExtResource( 4 )
+
+[node name="Limits" type="KinematicBody2D" parent="."]
+position = Vector2( 360, -9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limits"]
+position = Vector2( 0, 498 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limits"]
+position = Vector2( 370, 249 )
+shape = SubResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 720.0
@@ -84,8 +103,6 @@ position = Vector2( 360.05, 450 )
 scale = Vector2( 0.1, 1 )
 texture = ExtResource( 5 )
 
-[node name="Aliens" parent="." instance=ExtResource( 4 )]
-
 [node name="Balls" type="Node2D" parent="."]
 
 [node name="Ball" parent="Balls" instance=ExtResource( 3 )]
@@ -99,16 +116,13 @@ visible = false
 position = Vector2( 682.745, 242.012 )
 
 [node name="ItemSpawn" parent="." instance=ExtResource( 11 )]
-Speeder = false
-Slower = false
-Shields = false
 
 [node name="LifeLabel" type="Label" parent="."]
 margin_left = 221.419
 margin_top = 12.3611
 margin_right = 411.419
 margin_bottom = 56.3611
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Life: 3"
 align = 1
 valign = 1
@@ -129,7 +143,6 @@ position = Vector2( -360, -240 )
 [node name="winUI" parent="MainCam" instance=ExtResource( 10 )]
 position = Vector2( -360, -240 )
 
-[connection signal="game_over" from="Aliens" to="." method="_on_Aliens_game_over"]
 [connection signal="heal" from="Balls/Ball" to="." method="_on_Ball_heal"]
 [connection signal="hit" from="Balls/Ball" to="." method="_on_Ball_hit"]
 [connection signal="hit" from="Bar" to="." method="_on_Ball_hit"]

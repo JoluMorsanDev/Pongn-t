@@ -3,8 +3,9 @@
 [ext_resource path="res://Assets/Sprites/Sprite1.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Minigames/GunFight/Cactacia.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 54 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 12.1802
+height = 99.6687
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 0, 0 )

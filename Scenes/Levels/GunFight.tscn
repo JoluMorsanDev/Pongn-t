@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BarEnemie.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/PauseUi.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/GameOverUi.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/WinrUi.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/ItemSpawn.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 360, 10 )
@@ -118,6 +119,10 @@ position = Vector2( 34.1095, 239.962 )
 visible = false
 position = Vector2( 682.745, 242.012 )
 
+[node name="ItemSpawn" parent="." instance=ExtResource( 11 )]
+Speeder = false
+Slower = false
+
 [node name="LifeLabel" type="Label" parent="."]
 margin_left = 221.419
 margin_top = 12.3611
@@ -144,5 +149,6 @@ position = Vector2( -360, -240 )
 [node name="winUI" parent="MainCam" instance=ExtResource( 10 )]
 position = Vector2( -360, -240 )
 
+[connection signal="heal" from="Balls/Ball" to="." method="_on_Ball_heal"]
 [connection signal="hit" from="Balls/Ball" to="." method="_on_Ball_hit"]
 [connection signal="hit" from="Bar" to="." method="_on_Ball_hit"]

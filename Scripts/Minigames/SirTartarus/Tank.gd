@@ -50,6 +50,6 @@ func inmunityflashnt():
 
 func _on_BulletTimer_timeout():
 	var bullet = Bullet.instance()
-	add_child(bullet)
-	bullet.speed = 200
-	bullet.global_position = Vector2(global_position.x - 200, global_position.y)
+	owner.owner.add_child(bullet)
+	bullet.speed = 150
+	bullet.global_position = $BulletPos.global_position

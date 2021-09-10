@@ -4,11 +4,24 @@ var firsttimeplaying = true
 var levelsunlocked = 0
 var firsttimeplayingfile = "user://firsttime.save"
 var levelsunlockedfile = "user://levels.save"
+var hitsound = load("res://Assets/Sound&Music/hit.wav")
+var hitnode = AudioStreamPlayer.new()
+var bouncesound = load("res://Assets/Sound&Music/Jump.wav")
+var bouncenode = AudioStreamPlayer.new()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_first_time()
 	load_levels_unlocked()
+	hitnode.stream = hitsound
+	bouncenode.stream = bouncesound
+
+func play_bounce():
+	bouncenode.play()
+
+func play_hit():
+	hitnode.play()
 
 func save_first_time():
 	var file = File.new()

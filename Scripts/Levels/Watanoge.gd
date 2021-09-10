@@ -22,8 +22,6 @@ func _process(delta):
 		get_tree().reload_current_scene()
 	if life >= 0:
 		$LifeLabel.text = "Life: " + str(life)
-	if $WesternGame.get_node_or_null("WesternBoi") == null:
-		win()
 
 func _on_Ball_hit():
 	Singletones.play_hit()
@@ -65,21 +63,23 @@ func game_over():
 	$MainCam.global_rotation_degrees = 0
 	$ColorRect.color = Color(0, 0, 0, 0)
 	get_tree().paused = true
-	$MainCam/Gameoverui.show()
+	$MainCam/GameOverUI.show()
 
 func win():
 	screenshake = false
 	$MainCam.global_position.y = 240
 	$MainCam.global_rotation_degrees = 0
 	$ColorRect.color = Color(0, 0, 0, 0)
-	if Singletones.levelsunlocked == 1:
-		Singletones.levelsunlocked = 2
+	Singletones.levelsunlocked = 1
 	Singletones.save_levels_unlocked()
 	get_tree().paused = true
 	$MainCam/winUI.show()
 
 func _on_Bar_hit():
 	_on_Ball_hit()
+
+func _on_Aliens_game_over():
+	game_over()
 
 func _on_Ball_heal():
 	life += 1

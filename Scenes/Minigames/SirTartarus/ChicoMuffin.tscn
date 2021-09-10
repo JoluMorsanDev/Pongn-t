@@ -268,6 +268,13 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -23.4031, 24.032, -23.4453, 28.6926, -28.1077, 28.781, -28.0502, 46.3844, -50.2095, 46.4493, -50.4744, 55.5871, -28.217, 55.768, -28.0309, 94.5405, -23.462, 94.5405, -23.5084, 99.024, -19.587, 99.2183, -19.5867, 117.868, -4.47229, 117.78, -4.4726, 99.0415, 4.60669, 99.024, 4.45477, 117.691, 19.304, 117.691, 19.5402, 98.9406, 23.4871, 98.9782, 23.4477, 94.2929, 28.0937, 94.4503, 28.0204, 55.6487, 52.4959, 55.8459, 52.6727, 46.4767, 28.1666, 46.374, 28.1166, 28.8032, 23.4951, 28.7754, 23.4395, 24.0425, 9.45709, 24.119, 9.42395, 18.8217, 18.6447, 18.6902, 18.7331, -18.6097, -18.6552, -18.6981, -18.8065, 18.797, -9.3407, 18.8527, -9.34833, 23.9865 )
 
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HitArea"]
+polygon = PoolVector2Array( -23.4031, 24.032, -23.4453, 28.6926, -28.1077, 28.781, -28.0502, 46.3844, -50.2095, 46.4493, -50.4744, 55.5871, -28.217, 55.768, -28.0309, 94.5405, -23.462, 94.5405, -23.5084, 99.024, -19.587, 99.2183, -19.5867, 117.868, -4.47229, 117.78, -4.4726, 99.0415, 4.60669, 99.024, 4.45477, 117.691, 19.304, 117.691, 19.5402, 98.9406, 23.4871, 98.9782, 23.4477, 94.2929, 28.0937, 94.4503, 28.0204, 55.6487, 52.4959, 55.8459, 52.6727, 46.4767, 28.1666, 46.374, 28.1166, 28.8032, 23.4951, 28.7754, 23.4395, 24.0425, 9.45709, 24.119, 9.42395, 18.8217, 18.6447, 18.6902, 18.7331, -18.6097, -18.6552, -18.6981, -18.8065, 18.797, -9.3407, 18.8527, -9.34833, 23.9865 )
+
 [node name="PickaxeArea" type="Area2D" parent="."]
 collision_layer = 1024
 collision_mask = 1024
@@ -278,10 +285,12 @@ polygon = PoolVector2Array( -23.4031, 24.032, -23.4453, 28.6926, -28.1077, 28.78
 [node name="Tank" parent="." instance=ExtResource( 4 )]
 
 [node name="Pickaxe Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
 
-[node name="FlyTimer" type="Timer" parent="."]
+[node name="PickaxeReloadTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
 
 [node name="FliesSummon" type="Node2D" parent="."]
 
@@ -291,5 +300,7 @@ position = Vector2( 35, 184.139 )
 [node name="Position2D2" type="Position2D" parent="FliesSummon"]
 position = Vector2( 35, -76.195 )
 
+[connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
 [connection signal="area_entered" from="PickaxeArea" to="." method="_on_PickaxeArea_area_entered"]
 [connection signal="timeout" from="Pickaxe Timer" to="." method="_on_Pickaxe_Timer_timeout"]
+[connection signal="timeout" from="PickaxeReloadTimer" to="." method="_on_PickaxeReloadTimer_timeout"]
