@@ -1,0 +1,330 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Sprites/Sprite1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Minigames/SirTartarus/ChicoMuffin.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Minigames/SirTartarus/Pickaxe.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Minigames/SirTartarus/Tank.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Minigames/SirTartarus/Fly.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Nueva Animación"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="ChicoMuffin" type="KinematicBody2D"]
+position = Vector2( 610, 215 )
+script = ExtResource( 2 )
+Pickaxe = ExtResource( 3 )
+fly = ExtResource( 5 )
+
+[node name="Body" type="Sprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Head" type="Sprite" parent="Body"]
+
+[node name="Head2" type="Sprite" parent="Body/Head"]
+texture = ExtResource( 1 )
+
+[node name="Head4" type="Sprite" parent="Body/Head"]
+position = Vector2( 0, -6 )
+scale = Vector2( 0.5, 0.75 )
+texture = ExtResource( 1 )
+
+[node name="Head5" type="Sprite" parent="Body/Head"]
+position = Vector2( 0, 7 )
+scale = Vector2( 0.5, 0.75 )
+texture = ExtResource( 1 )
+
+[node name="Head3" type="Sprite" parent="Body/Head"]
+position = Vector2( -4, 0 )
+scale = Vector2( 1, 0.75 )
+texture = ExtResource( 1 )
+
+[node name="Body" type="Sprite" parent="Body"]
+
+[node name="Body2" type="Sprite" parent="Body/Body"]
+position = Vector2( 0, 41 )
+scale = Vector2( 1.25, 2 )
+texture = ExtResource( 1 )
+
+[node name="Body3" type="Sprite" parent="Body/Body"]
+position = Vector2( 0, 41 )
+scale = Vector2( 1.5, 1.75 )
+texture = ExtResource( 1 )
+
+[node name="Arms" type="Sprite" parent="Body"]
+
+[node name="Left" type="Sprite" parent="Body/Arms"]
+position = Vector2( -17.7898, 34 )
+scale = Vector2( 0.987, 0.25 )
+texture = ExtResource( 1 )
+
+[node name="Left2" type="Sprite" parent="Body/Arms/Left"]
+position = Vector2( -12.8395, 12.5 )
+scale = Vector2( 0.25, 2 )
+texture = ExtResource( 1 )
+
+[node name="Right" type="Sprite" parent="Body/Arms"]
+position = Vector2( 19, 34 )
+scale = Vector2( 1, 0.25 )
+texture = ExtResource( 1 )
+
+[node name="Left2" type="Sprite" parent="Body/Arms/Right"]
+position = Vector2( 13.1605, 12.5 )
+scale = Vector2( 0.25, 2 )
+texture = ExtResource( 1 )
+
+[node name="Legs" type="Sprite" parent="Body"]
+
+[node name="Left" type="Sprite" parent="Body/Legs"]
+position = Vector2( -8, 66 )
+scale = Vector2( 0.4, 1 )
+texture = ExtResource( 1 )
+
+[node name="Left2" type="Sprite" parent="Body/Legs/Left"]
+position = Vector2( 0, 4 )
+scale = Vector2( 0.75, 1 )
+texture = ExtResource( 1 )
+
+[node name="Right3" type="Sprite" parent="Body/Legs/Left"]
+position = Vector2( -2.5, 19 )
+scale = Vector2( 1.25, 0.313 )
+texture = ExtResource( 1 )
+
+[node name="Right4" type="Sprite" parent="Body/Legs/Left"]
+position = Vector2( -5, 19 )
+scale = Vector2( 1.25, 0.25 )
+texture = ExtResource( 1 )
+
+[node name="Right" type="Sprite" parent="Body/Legs"]
+position = Vector2( 8, 66 )
+scale = Vector2( 0.4, 1 )
+texture = ExtResource( 1 )
+
+[node name="Right2" type="Sprite" parent="Body/Legs/Right"]
+position = Vector2( 0, 4 )
+scale = Vector2( 0.75, 1 )
+texture = ExtResource( 1 )
+
+[node name="Right3" type="Sprite" parent="Body/Legs/Right"]
+position = Vector2( -2.5, 19 )
+scale = Vector2( 1.25, 0.313 )
+texture = ExtResource( 1 )
+
+[node name="Right4" type="Sprite" parent="Body/Legs/Right"]
+position = Vector2( -5, 19 )
+scale = Vector2( 1.25, 0.25 )
+texture = ExtResource( 1 )
+
+[node name="Tail" type="Sprite" parent="Body"]
+
+[node name="Tail2" type="Sprite" parent="Body/Tail"]
+position = Vector2( 22, 56 )
+scale = Vector2( 0.5, 0.1 )
+texture = ExtResource( 1 )
+
+[node name="Tail4" type="Sprite" parent="Body/Tail"]
+position = Vector2( 25.75, 32 )
+scale = Vector2( 0.2, 0.1 )
+texture = ExtResource( 1 )
+
+[node name="Tail8" type="Sprite" parent="Body/Tail"]
+position = Vector2( 31.75, 16 )
+scale = Vector2( 0.2, 0.1 )
+texture = ExtResource( 1 )
+
+[node name="Tail9" type="Sprite" parent="Body/Tail"]
+position = Vector2( 31.75, 15 )
+scale = Vector2( 0.1, 0.15 )
+texture = ExtResource( 1 )
+
+[node name="Tail6" type="Sprite" parent="Body/Tail"]
+position = Vector2( 27.75, 39.5 )
+scale = Vector2( 0.4, 0.1 )
+texture = ExtResource( 1 )
+
+[node name="Tail3" type="Sprite" parent="Body/Tail"]
+position = Vector2( 27, 44 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 1 )
+
+[node name="Tail5" type="Sprite" parent="Body/Tail"]
+position = Vector2( 22, 35.75 )
+scale = Vector2( 0.1, 0.4 )
+texture = ExtResource( 1 )
+
+[node name="Tail7" type="Sprite" parent="Body/Tail"]
+position = Vector2( 32, 28.25 )
+scale = Vector2( 0.1, 1 )
+texture = ExtResource( 1 )
+
+[node name="Pickaxes" type="Sprite" parent="."]
+
+[node name="first" type="Sprite" parent="Pickaxes"]
+position = Vector2( 35.1821, 109.709 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="Sprite" type="Sprite" parent="Pickaxes/first"]
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 0, -24 )
+texture = ExtResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 1 )
+
+[node name="Sprite4" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 0, 50 )
+texture = ExtResource( 1 )
+
+[node name="Sprite12" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 0, 75 )
+texture = ExtResource( 1 )
+
+[node name="Sprite5" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 0, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite13" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 0, -74 )
+texture = ExtResource( 1 )
+
+[node name="Sprite6" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( -25, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite7" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( -50, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite8" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( -75, -24 )
+texture = ExtResource( 1 )
+
+[node name="Sprite9" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 25, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite10" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 50, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite11" type="Sprite" parent="Pickaxes/first"]
+position = Vector2( 75, -24 )
+texture = ExtResource( 1 )
+
+[node name="second" type="Sprite" parent="Pickaxes"]
+position = Vector2( 54.1821, 109.709 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="Sprite" type="Sprite" parent="Pickaxes/second"]
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 0, -24 )
+texture = ExtResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 1 )
+
+[node name="Sprite4" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 0, 50 )
+texture = ExtResource( 1 )
+
+[node name="Sprite12" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 0, 75 )
+texture = ExtResource( 1 )
+
+[node name="Sprite5" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 0, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite13" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 0, -74 )
+texture = ExtResource( 1 )
+
+[node name="Sprite6" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( -25, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite7" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( -50, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite8" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( -75, -24 )
+texture = ExtResource( 1 )
+
+[node name="Sprite9" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 25, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite10" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 50, -49 )
+texture = ExtResource( 1 )
+
+[node name="Sprite11" type="Sprite" parent="Pickaxes/second"]
+position = Vector2( 75, -24 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -23.4031, 24.032, -23.4453, 28.6926, -28.1077, 28.781, -28.0502, 46.3844, -50.2095, 46.4493, -50.4744, 55.5871, -28.217, 55.768, -28.0309, 94.5405, -23.462, 94.5405, -23.5084, 99.024, -19.587, 99.2183, -19.5867, 117.868, -4.47229, 117.78, -4.4726, 99.0415, 4.60669, 99.024, 4.45477, 117.691, 19.304, 117.691, 19.5402, 98.9406, 23.4871, 98.9782, 23.4477, 94.2929, 28.0937, 94.4503, 28.0204, 55.6487, 52.4959, 55.8459, 52.6727, 46.4767, 28.1666, 46.374, 28.1166, 28.8032, 23.4951, 28.7754, 23.4395, 24.0425, 9.45709, 24.119, 9.42395, 18.8217, 18.6447, 18.6902, 18.7331, -18.6097, -18.6552, -18.6981, -18.8065, 18.797, -9.3407, 18.8527, -9.34833, 23.9865 )
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HitArea"]
+polygon = PoolVector2Array( -23.4031, 24.032, -23.4453, 28.6926, -28.1077, 28.781, -28.0502, 46.3844, -50.2095, 46.4493, -50.4744, 55.5871, -28.217, 55.768, -28.0309, 94.5405, -23.462, 94.5405, -23.5084, 99.024, -19.587, 99.2183, -19.5867, 117.868, -4.47229, 117.78, -4.4726, 99.0415, 4.60669, 99.024, 4.45477, 117.691, 19.304, 117.691, 19.5402, 98.9406, 23.4871, 98.9782, 23.4477, 94.2929, 28.0937, 94.4503, 28.0204, 55.6487, 52.4959, 55.8459, 52.6727, 46.4767, 28.1666, 46.374, 28.1166, 28.8032, 23.4951, 28.7754, 23.4395, 24.0425, 9.45709, 24.119, 9.42395, 18.8217, 18.6447, 18.6902, 18.7331, -18.6097, -18.6552, -18.6981, -18.8065, 18.797, -9.3407, 18.8527, -9.34833, 23.9865 )
+
+[node name="PickaxeArea" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="PickaxeArea"]
+polygon = PoolVector2Array( -23.4031, 24.032, -23.4453, 28.6926, -28.1077, 28.781, -28.0502, 46.3844, -50.2095, 46.4493, -50.4744, 55.5871, -28.217, 55.768, -28.0309, 94.5405, -23.462, 94.5405, -23.5084, 99.024, -19.587, 99.2183, -19.5867, 117.868, -4.47229, 117.78, -4.4726, 99.0415, 4.60669, 99.024, 4.45477, 117.691, 19.304, 117.691, 19.5402, 98.9406, 23.4871, 98.9782, 23.4477, 94.2929, 28.0937, 94.4503, 28.0204, 55.6487, 52.4959, 55.8459, 52.6727, 46.4767, 28.1666, 46.374, 28.1166, 28.8032, 23.4951, 28.7754, 23.4395, 24.0425, 9.45709, 24.119, 9.42395, 18.8217, 18.6447, 18.6902, 18.7331, -18.6097, -18.6552, -18.6981, -18.8065, 18.797, -9.3407, 18.8527, -9.34833, 23.9865 )
+
+[node name="Tank" parent="." instance=ExtResource( 4 )]
+
+[node name="Pickaxe Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="PickaxeReloadTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="FliesSummon" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="FliesSummon"]
+position = Vector2( 35, 184.139 )
+
+[node name="Position2D2" type="Position2D" parent="FliesSummon"]
+position = Vector2( 35, -76.195 )
+
+[node name="Inmunity" type="AnimationPlayer" parent="."]
+"anims/Nueva Animación" = SubResource( 1 )
+
+[node name="IT" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
+[connection signal="area_entered" from="PickaxeArea" to="." method="_on_PickaxeArea_area_entered"]
+[connection signal="timeout" from="Pickaxe Timer" to="." method="_on_Pickaxe_Timer_timeout"]
+[connection signal="timeout" from="PickaxeReloadTimer" to="." method="_on_PickaxeReloadTimer_timeout"]
+[connection signal="timeout" from="IT" to="." method="_on_IT_timeout"]

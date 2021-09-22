@@ -1,0 +1,224 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Sprites/Sprite1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Minigames/JoluMorsanDev/Yoshiazul12347.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Minigames/JoluMorsanDev/Anvorgentasma.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Minigames/JoluMorsanDev/Logs.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Minigames/JoluMorsanDev/Saw.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Minigames/JoluMorsanDev/Cell.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Nueva Animación"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 104.355, 54.4528 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "cellparation"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "cellgen"
+}, {
+"args": [  ],
+"method": "cellgen"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "gherost"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "anvorgentasmagen"
+}, {
+"args": [  ],
+"method": "anvorgentasmagen"
+}, {
+"args": [  ],
+"method": "anvorgentasmagen"
+}, {
+"args": [  ],
+"method": "anvorgentasmagen"
+}, {
+"args": [  ],
+"method": "anvorgentasmagen"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "huevoman"
+length = 1.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "loggen"
+}, {
+"args": [  ],
+"method": "sawgen"
+}, {
+"args": [  ],
+"method": "loggen"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 1.5
+
+[node name="Yoshiazul" type="KinematicBody2D"]
+position = Vector2( 596, 215 )
+script = ExtResource( 2 )
+Saw = ExtResource( 5 )
+Logs = ExtResource( 4 )
+Anvorgentasma = ExtResource( 3 )
+Cell = ExtResource( 6 )
+
+[node name="Body" type="Sprite" parent="."]
+position = Vector2( 0, 40 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Head" type="Sprite" parent="Body"]
+scale = Vector2( 2.5, 2.5 )
+
+[node name="Head2" type="Sprite" parent="Body/Head"]
+texture = ExtResource( 1 )
+
+[node name="Head4" type="Sprite" parent="Body/Head"]
+scale = Vector2( 0.75, 1.25 )
+texture = ExtResource( 1 )
+
+[node name="Head5" type="Sprite" parent="Body/Head"]
+position = Vector2( 3.46667, 0 )
+scale = Vector2( 0.75, 1.2 )
+texture = ExtResource( 1 )
+
+[node name="Head9" type="Sprite" parent="Body/Head"]
+position = Vector2( 0, -2.93333 )
+scale = Vector2( 0.75, 1.2 )
+texture = ExtResource( 1 )
+
+[node name="Head6" type="Sprite" parent="Body/Head"]
+position = Vector2( 6.66667, 0.799999 )
+scale = Vector2( 0.75, 1 )
+texture = ExtResource( 1 )
+
+[node name="Head7" type="Sprite" parent="Body/Head"]
+position = Vector2( 9.60001, 5.33333 )
+scale = Vector2( 0.75, 0.8 )
+texture = ExtResource( 1 )
+
+[node name="Head3" type="Sprite" parent="Body/Head"]
+scale = Vector2( 1.25, 0.75 )
+texture = ExtResource( 1 )
+
+[node name="Head8" type="Sprite" parent="Body/Head"]
+position = Vector2( 6.66667, 9.06667 )
+scale = Vector2( 1.25, 0.4 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( 34.653, -27.4539, 32.8712, -16.7631, 55.5891, 2.83665, 71.1798, 56.2906, 83.2069, 90.5902, 35.9893, 97.2719, -25.0372, 97.7173, -57.5551, 62.0814, -58.0005, 18.8728, -32.1644, -11.4177, -25.9282, -26.563 )
+
+[node name="HitArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HitArea"]
+position = Vector2( -1, -5 )
+scale = Vector2( 1.15, 1.15 )
+polygon = PoolVector2Array( 34.653, -27.4539, 32.8712, -16.7631, 55.5891, 2.83665, 71.1798, 56.2906, 83.2069, 90.5902, 35.9893, 97.2719, -25.0372, 97.7173, -57.5551, 62.0814, -58.0005, 18.8728, -32.1644, -11.4177, -25.9282, -26.563 )
+
+[node name="Inmunity" type="AnimationPlayer" parent="."]
+"anims/Nueva Animación" = SubResource( 1 )
+
+[node name="IT" type="Timer" parent="."]
+one_shot = true
+
+[node name="UParea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UParea"]
+position = Vector2( 0, -16 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="UParea"]
+enabled = true
+cast_to = Vector2( 0, -60 )
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DownArea" type="Area2D" parent="."]
+position = Vector2( 0, 71 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownArea"]
+position = Vector2( 0, 23 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="DownArea"]
+enabled = true
+cast_to = Vector2( 0, 60 )
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Atk" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+playback_speed = 0.6
+anims/cellparation = SubResource( 3 )
+anims/gherost = SubResource( 4 )
+anims/huevoman = SubResource( 5 )
+anims/idle = SubResource( 6 )
+
+[connection signal="area_entered" from="HitArea" to="." method="_on_HitArea_area_entered"]
+[connection signal="timeout" from="IT" to="." method="_on_IT_timeout"]
+[connection signal="area_entered" from="UParea" to="." method="_on_UParea_area_entered"]
+[connection signal="area_exited" from="UParea" to="." method="_on_UParea_area_exited"]
+[connection signal="area_entered" from="DownArea" to="." method="_on_DownArea_area_entered"]
+[connection signal="area_exited" from="DownArea" to="." method="_on_DownArea_area_exited"]
+[connection signal="animation_finished" from="Atk" to="." method="_on_Atk_animation_finished"]

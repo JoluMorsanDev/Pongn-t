@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Sprites/Sprite1.png" type="Texture" id=1]
+
+[node name="Hammer" type="RigidBody2D"]
+mode = 1
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -75 )
+scale = Vector2( 0.75, 6 )
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="Sprite"]
+position = Vector2( 0, -5.5 )
+scale = Vector2( 6, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="Sprite"]
+position = Vector2( 0, -5.5 )
+scale = Vector2( 7, 0.375 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -600, -65 )
+polygon = PoolVector2Array( 590.625, -85, 590.619, -80.5127, 543.75, -80.4922, 543.75, -71.1172, 534.383, -71.1172, 534.384, -14.8783, 543.742, -14.8594, 543.742, -5.5, 590.625, -5.48438, 590.625, 64.9922, 609.383, 65.0078, 609.375, -5.50781, 656.25, -5.50781, 656.258, -14.875, 665.625, -14.8672, 665.617, -71.125, 656.258, -71.1094, 656.258, -80.5, 609.381, -80.5046, 609.375, -85.0078 )
